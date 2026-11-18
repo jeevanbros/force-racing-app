@@ -1,0 +1,23 @@
+# Build output
+build/
+
+# Build artifacts
+*.apk
+*.idsig
+
+# Signing material — never commit
+*.jks
+*.keystore
+
+# Local scraping / generated site previews
+logo/
+site.html
+site.json
+
+# Only ignore images at the repo root; res/**/*.png are part of the app
+/*.png
+
+# Python / Gradle / local config
+__pycache__/
+.gradle/
+local.properties
