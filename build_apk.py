@@ -57,7 +57,7 @@ def main() -> None:
     unsigned = BUILD / "unsigned.apk"
     run([AAPT2, "link", "-o", unsigned, "-I", ANDROID_JAR,
          "--manifest", SRC / "AndroidManifest.xml",
-         "--min-sdk-version", "24", "--target-sdk-version", "35",
+         "--min-sdk-version", "21", "--target-sdk-version", "35",
          "--version-code", "2", "--version-name", "2.0",
          "--java", BUILD / "gen",
          BUILD / "res.zip"])
@@ -68,7 +68,7 @@ def main() -> None:
          "-classpath", ANDROID_JAR, "-d", BUILD / "classes", *java_files])
 
     class_files = [str(p) for p in (BUILD / "classes").rglob("*.class")]
-    run([D8, "--lib", ANDROID_JAR, "--min-api", "24", "--output", BUILD / "dex", *class_files])
+    run([D8, "--lib", ANDROID_JAR, "--min-api", "21", "--output", BUILD / "dex", *class_files])
 
     with_dex = BUILD / "with-dex.apk"
     with zipfile.ZipFile(unsigned) as src, zipfile.ZipFile(with_dex, "w", zipfile.ZIP_DEFLATED) as dst:
