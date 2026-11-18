@@ -64,7 +64,7 @@ def main() -> None:
 
     java_files = [str(p) for p in (SRC / "src").rglob("*.java")]
     java_files += [str(p) for p in (BUILD / "gen").rglob("*.java")]
-    run([JAVAC, "-source", "8", "-target", "8", "-nowarn",
+    run([JAVAC, "-encoding", "UTF-8", "-source", "8", "-target", "8", "-nowarn",
          "-classpath", ANDROID_JAR, "-d", BUILD / "classes", *java_files])
 
     class_files = [str(p) for p in (BUILD / "classes").rglob("*.class")]
@@ -97,3 +97,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
